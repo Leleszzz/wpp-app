@@ -1,0 +1,1 @@
+{"name":"wpp-expenses-agent","version":"1.0.0","description":"Agente de despesas via WhatsApp + OpenAI + MongoDB","main":"index.js","type":"commonjs","scripts":{"start":"node index.js"},"dependencies":{"dotenv":"^16.4.5","luxon":"^3.7.2","mongodb":"^6.8.0","openai":"^4.55.0","qrcode-terminal":"^0.12.0","whatsapp-web.js":"^1.26.0"}}
