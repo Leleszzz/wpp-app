@@ -40,9 +40,17 @@ const LASTLIST_TTL_MS = parseInt(process.env.LASTLIST_TTL_MS || '1800000', 10); 
 
 // ==========================================================
 const wpp = new Client({
-  authStrategy: new LocalAuth({ clientId: 'expenses-bot' }),
-  puppeteer: { headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] },
+  authStrategy: new LocalAuth({
+    clientId: 'expenses-bot',
+    dataPath: process.env.WWEB_DATA_PATH || './.wwebjs_auth'
+  }),
+  puppeteer: {
+    headless: true,
+    executablePath: process.env.PUPPETEER_EXECUTABLE_PATH || '/usr/bin/chromium',
+    args: ['--no-sandbox','--disable-setuid-sandbox','--disable-dev-shm-usage']
+  }
 });
+
 
 const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 const mongo = new MongoClient(process.env.MONGODB_URI, { maxPoolSize: 10 });
